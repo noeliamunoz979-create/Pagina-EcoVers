@@ -228,7 +228,7 @@
             border: 2px solid #4cd964;
             border-radius: 15px;
             padding: 15px;
-            width: 300px; /* Más ancho para que quepan más fotos */
+            width: 300px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             display: none; 
             z-index: 200;
@@ -250,9 +250,9 @@
 
         .opciones-foto {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columnas para las 7 fotos */
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
-            max-height: 250px; /* Altura máxima con scroll si hay muchas */
+            max-height: 250px;
             overflow-y: auto;
             padding-right: 5px;
         }
@@ -638,7 +638,6 @@
         }
 
         @media (max-width: 768px) {
-            /* Ajustes de la barra de navegación */
             body {
                 padding-top: 80px;
             }
@@ -678,7 +677,6 @@
                 font-size: 0.6rem;
             }
 
-            /* Ajustes de contenido */
             .content-section {
                 width: 95%;
             }
@@ -710,7 +708,6 @@
                 font-size: 1.1rem;
             }
 
-            /* Ajustes del menú de perfil */
             .menu-perfil {
                 width: 260px;
                 right: -10px;
@@ -718,7 +715,7 @@
             }
 
             .opciones-foto {
-                grid-template-columns: repeat(3, 1fr); /* 3 columnas en móvil */
+                grid-template-columns: repeat(3, 1fr);
                 gap: 6px;
             }
 
@@ -726,7 +723,6 @@
                 font-size: 1.2rem;
             }
 
-            /* Ajustes de las tarjetas de imágenes */
             .importancia-card img {
                 height: 150px;
             }
@@ -743,7 +739,6 @@
                 padding: 15px;
             }
 
-            /* Ajustes de la tabla comparativa */
             .tabla-comparativa {
                 font-size: 0.75rem;
             }
@@ -752,7 +747,6 @@
                 padding: 6px;
             }
 
-            /* Ajustes de la línea de tiempo */
             .timeline-container {
                 padding: 15px;
             }
@@ -866,6 +860,14 @@
                     <!-- Opción 7: Ari -->
                     <div class="opcion-foto" onclick="cambiarFoto('Ari.jpg.jpeg')">
                         <img src="Ari.jpg.jpeg" alt="Ari">
+                    </div>
+                    <!-- Opción 8: TelefonoUno (NUEVA) -->
+                    <div class="opcion-foto" onclick="cambiarFoto('telefonouno.jpg.jpeg')">
+                        <img src="telefonouno.jpg.jpeg" alt="Telefono 1">
+                    </div>
+                    <!-- Opción 9: Telefono (NUEVA) -->
+                    <div class="opcion-foto" onclick="cambiarFoto('telefono.jpg.jpeg')">
+                        <img src="telefono.jpg.jpeg" alt="Telefono">
                     </div>
                 </div>
             </div>
