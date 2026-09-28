@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoVerse </title>
-    <!-- Importamos la librería de iconos FontAwesome -->
+    <title>EcoVerse - OFICIAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Importamos la fuente Nunito de Google Fonts para un look redondeado -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -18,33 +15,37 @@
             font-family: 'Nunito', sans-serif;
         }
 
-        body {
-            /* Fondo de cielo/paisaje simulado para que contraste */
-            background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 20px;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Contenedor principal de la barra */
+        body {
+            background-color: #0d1f22;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            overflow-x: hidden;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN --- */
         .navbar {
-            background-color: #0d1f22; /* Color oscuro de fondo */
+            background-color: #0d1f22; 
             width: 98%;
             height: 70px;
-            border-radius: 50px; /* Bordes redondeados */
+            border-radius: 50px; 
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 2px solid #000; /* Borde negro sutil */
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 2px solid #000; 
+            position: fixed; 
+            top: 10px;
+            z-index: 100; 
         }
 
-        /* --- SECCIÓN LOGO --- */
         .logo-section {
             display: flex;
             align-items: center;
@@ -53,14 +54,12 @@
             width: 180px;
         }
 
-        /* Icono de reciclaje grande */
         .logo-icon {
             font-size: 3rem;
-            color: #4cd964; /* Verde brillante */
+            color: #4cd964; 
             text-shadow: 2px 2px 0px #000;
         }
 
-        /* Texto del logo */
         .logo-text {
             display: flex;
             flex-direction: column;
@@ -85,7 +84,6 @@
             margin-top: -5px;
         }
 
-        /* --- SECCIÓN MENÚ --- */
         .menu-items {
             display: flex;
             align-items: center;
@@ -106,36 +104,36 @@
             position: relative;
             height: 100%;
             padding: 0 10px;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .menu-item i {
             font-size: 1.4rem;
             color: white;
+            transition: all 0.3s ease;
         }
 
-        /* Estilo específico para el item activo (Inicio) */
         .menu-item.active {
-            color: #aaffaa; /* Verde claro */
+            color: #aaffaa; 
         }
         
         .menu-item.active i {
-            color: #4cd964; /* Icono verde */
+            color: #4cd964; 
+            text-shadow: 0 0 10px rgba(76, 217, 100, 0.8); 
         }
 
-        /* La línea verde debajo de Inicio */
         .menu-item.active::after {
             content: '';
             position: absolute;
-            bottom: 12px; /* Ajustar según altura */
+            bottom: 12px; 
             left: 0;
             width: 100%;
             height: 3px;
             background-color: #4cd964;
             border-radius: 2px;
+            box-shadow: 0 0 8px rgba(76, 217, 100, 0.8); 
         }
 
-        /* Separadores verticales sutiles entre items (opcional) */
         .menu-item:not(:last-child)::before {
             content: '';
             position: absolute;
@@ -145,9 +143,9 @@
             background-color: rgba(255,255,255,0.1);
         }
 
-        /* --- BOTÓN VERDE "EMPIEZA A RECICLAR" --- */
+        /* --- BOTÓN CTA --- */
         .cta-button {
-            background-color: #8ce563; /* Verde lima */
+            background-color: #8ce563; 
             color: #0d1f22;
             font-weight: 900;
             font-size: 0.9rem;
@@ -157,13 +155,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transform: rotate(-2deg); /* Ligera inclinación */
+            transform: rotate(-2deg); 
             box-shadow: 2px 2px 0px #000;
             cursor: pointer;
             text-transform: uppercase;
             line-height: 1;
             margin: 0 10px;
-            /* Efecto de borde irregular simulado con clip-path o borders, aquí usamos simple */
             clip-path: polygon(
                 0% 10%, 5% 0%, 95% 5%, 100% 15%, 
                 98% 85%, 95% 100%, 5% 95%, 2% 90%
@@ -180,6 +177,7 @@
             align-items: center;
             gap: 15px;
             margin-right: 15px;
+            position: relative; 
         }
 
         .score-display {
@@ -192,7 +190,7 @@
         }
 
         .score-display .stars {
-            color: #ffcc00; /* Color estrella */
+            color: #ffcc00; 
             font-size: 0.8rem;
             margin-bottom: 2px;
         }
@@ -207,6 +205,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
         }
 
         .avatar img {
@@ -215,20 +219,568 @@
             object-fit: cover;
         }
 
-        /* Ajustes para pantallas pequeñas para que no se rompa */
+        /* --- MENÚ DESPLEGABLE DE PERFIL --- */
+        .menu-perfil {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #1a2e32;
+            border: 2px solid #4cd964;
+            border-radius: 15px;
+            padding: 15px;
+            width: 300px; /* Más ancho para que quepan más fotos */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            display: none; 
+            z-index: 200;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .menu-perfil.visible {
+            display: block;
+        }
+
+        .menu-perfil h4 {
+            color: #8ce563;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(76, 217, 100, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .opciones-foto {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columnas para las 7 fotos */
+            gap: 8px;
+            max-height: 250px; /* Altura máxima con scroll si hay muchas */
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .opciones-foto::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .opciones-foto::-webkit-scrollbar-thumb {
+            background-color: #4cd964;
+            border-radius: 3px;
+        }
+
+        .opcion-foto {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 2px solid #4cd964;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0d1f22;
+        }
+
+        .opcion-foto:hover {
+            transform: scale(1.1);
+            border-color: #8ce563;
+        }
+
+        .opcion-foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .opcion-foto i {
+            font-size: 1.5rem;
+            color: #4cd964;
+        }
+
+        /* --- SECCIONES --- */
+        .seccion {
+            width: 100%;
+            display: none; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inicio {
+            display: flex;
+            height: calc(100vh - 100px);
+            padding: 0 20px;
+        }
+
+        #inicio img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #aprende-jugando {
+            display: flex;
+            height: calc(100vh - 100px);
+            padding: 0 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #aprende-jugando img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid #4cd964;
+        }
+
+        .content-section {
+            width: 90%;
+            max-width: 1000px;
+            color: white;
+            animation: fadeIn 0.5s ease-in-out;
+            padding-bottom: 50px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #8ce563;
+            text-shadow: 2px 2px 0 #000;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .article-text {
+            background: rgba(0, 0, 0, 0.85); 
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid #4cd964;
+        }
+
+        .article-text h3 {
+            font-size: 1.6rem;
+            color: #8ce563;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .article-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .article-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .article-text ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .article-text ul li {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .article-text ul li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            color: #4cd964;
+            font-size: 1.2rem;
+        }
+
+        .article-text strong {
+            color: #8ce563;
+        }
+
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            background-color: #4cd964;
+            color: #0d1f22;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0 #000;
+        }
+
+        .link-btn:hover {
+            background-color: #8ce563;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        /* --- ESTILOS PARA LA TABLA COMPARATIVA --- */
+        .tabla-comparativa {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .tabla-comparativa th, .tabla-comparativa td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(76, 217, 100, 0.3);
+        }
+
+        .tabla-comparativa th {
+            background-color: #4cd964;
+            color: #0d1f22;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .tabla-comparativa td {
+            color: #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        .tabla-comparativa tr:hover {
+            background-color: rgba(76, 217, 100, 0.1);
+        }
+
+        /* --- ESTILOS PARA LA SECCIÓN DE IMPORTANCIA --- */
+        .importancia-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .importancia-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #4cd964;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .importancia-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 217, 100, 0.4);
+        }
+
+        .importancia-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #4cd964;
+        }
+
+        .importancia-card-content {
+            padding: 25px;
+        }
+
+        .importancia-card-content h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .importancia-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .importancia-grid .full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --- ESTILOS PARA DATOS CURIOSOS --- */
+        .curiosos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .curioso-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #4cd964;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .curioso-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 217, 100, 0.4);
+        }
+
+        .curioso-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid #4cd964;
+        }
+
+        .curioso-card-content {
+            padding: 20px;
+        }
+
+        .curioso-card-content h4 {
+            font-size: 1.2rem;
+            color: #8ce563;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .curioso-card-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            text-align: justify;
+        }
+
+        .timeline-container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid #4cd964;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px dashed rgba(76, 217, 100, 0.3);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-icon {
+            font-size: 1.8rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .timeline-text {
+            flex-grow: 1;
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        .timeline-time {
+            font-weight: 900;
+            color: #8ce563;
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .curiosos-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .curioso-card.full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --- RESPONSIVE PARA CELULARES --- */
         @media (max-width: 1200px) {
-            .menu-item span { display: none; } /* Ocultar texto, dejar iconos */
+            .menu-item span { display: none; } 
             .menu-item { gap: 0; }
             .menu-item.active::after { bottom: 15px; }
-            .cta-button span { display: none; } /* Ocultar texto botón */
+            .cta-button span { display: none; } 
             .cta-button { padding: 10px; border-radius: 50%; }
+            .section-title { font-size: 1.8rem; }
+            .article-text { padding: 20px; }
+            #inicio { height: auto; padding: 20px; }
+            #inicio img { max-height: 70vh; }
+            #aprende-jugando { height: auto; padding: 20px; }
+            #aprende-jugando img { max-height: 70vh; }
+            
+            .tabla-comparativa th, .tabla-comparativa td {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Ajustes de la barra de navegación */
+            body {
+                padding-top: 80px;
+            }
+            
+            .navbar {
+                height: 60px;
+                padding: 0 5px;
+            }
+
+            .logo-section {
+                width: auto;
+                margin-left: 5px;
+            }
+
+            .logo-icon {
+                font-size: 2.2rem;
+            }
+
+            .logo-text span:first-child {
+                font-size: 0.9rem;
+            }
+
+            .logo-text span:last-child {
+                font-size: 1.3rem;
+            }
+
+            .menu-item i {
+                font-size: 1.2rem;
+            }
+
+            .avatar {
+                width: 38px;
+                height: 38px;
+            }
+
+            .score-display {
+                font-size: 0.6rem;
+            }
+
+            /* Ajustes de contenido */
+            .content-section {
+                width: 95%;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+
+            .article-text {
+                padding: 15px;
+            }
+
+            .article-text h3 {
+                font-size: 1.3rem;
+            }
+
+            .article-text p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .article-text ul li {
+                font-size: 0.95rem;
+                padding-left: 25px;
+            }
+
+            .article-text h4 {
+                font-size: 1.1rem;
+            }
+
+            /* Ajustes del menú de perfil */
+            .menu-perfil {
+                width: 260px;
+                right: -10px;
+                padding: 10px;
+            }
+
+            .opciones-foto {
+                grid-template-columns: repeat(3, 1fr); /* 3 columnas en móvil */
+                gap: 6px;
+            }
+
+            .opcion-foto i {
+                font-size: 1.2rem;
+            }
+
+            /* Ajustes de las tarjetas de imágenes */
+            .importancia-card img {
+                height: 150px;
+            }
+
+            .curioso-card img {
+                height: 140px;
+            }
+
+            .importancia-card-content {
+                padding: 15px;
+            }
+
+            .curioso-card-content {
+                padding: 15px;
+            }
+
+            /* Ajustes de la tabla comparativa */
+            .tabla-comparativa {
+                font-size: 0.75rem;
+            }
+
+            .tabla-comparativa th, .tabla-comparativa td {
+                padding: 6px;
+            }
+
+            /* Ajustes de la línea de tiempo */
+            .timeline-container {
+                padding: 15px;
+            }
+
+            .timeline-item {
+                gap: 10px;
+                padding: 8px 0;
+            }
+
+            .timeline-icon {
+                font-size: 1.5rem;
+                width: 30px;
+            }
+
+            .timeline-text {
+                font-size: 0.9rem;
+            }
+
+            .timeline-time {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar">
-        <!-- 1. Logo EcoVerse -->
         <div class="logo-section">
             <i class="fa-solid fa-recycle logo-icon"></i>
             <div class="logo-text">
@@ -237,52 +789,38 @@
             </div>
         </div>
 
-        <!-- 2. Menú de Navegación -->
         <div class="menu-items">
-            <!-- Inicio (Activo) -->
-            <a href="#" class="menu-item active">
+            <a href="#" class="menu-item active" id="btn-inicio">
                 <i class="fa-solid fa-house"></i>
                 <span>Inicio</span>
             </a>
-
-            <!-- ¿Qué es reciclar? -->
-            <a href="#" class="menu-item">
+            <a href="#" class="menu-item" id="btn-reciclar">
                 <i class="fa-solid fa-lightbulb"></i>
                 <span>¿Qué es reciclar?</span>
             </a>
-
-            <!-- Clasifica tu basura -->
-            <a href="#" class="menu-item">
+            <a href="#" class="menu-item" id="btn-clasifica">
                 <i class="fa-solid fa-trash-can"></i>
                 <span>Clasifica tu basura</span>
             </a>
-
-            <!-- Importancia -->
-            <a href="#" class="menu-item">
+            <a href="#" class="menu-item" id="btn-importancia">
                 <i class="fa-solid fa-earth-americas"></i>
                 <span>Importancia</span>
             </a>
-
-            <!-- Datos curiosos -->
-            <a href="#" class="menu-item">
+            <a href="#" class="menu-item" id="btn-datos">
                 <i class="fa-solid fa-star"></i>
                 <span>Datos curiosos</span>
             </a>
-
-            <!-- Aprende jugando -->
-            <a href="#" class="menu-item">
+            <a href="#" class="menu-item" id="btn-juego">
                 <i class="fa-solid fa-gamepad"></i>
                 <span>Aprende jugando</span>
             </a>
         </div>
 
-        <!-- 3. Botón CTA -->
         <button class="cta-button">
             <i class="fa-solid fa-leaf"></i>
             <span>¡Empieza a reciclar!</span>
         </button>
 
-        <!-- 4. Perfil y Puntos -->
         <div class="profile-section">
             <div class="score-display">
                 <div class="stars">
@@ -290,12 +828,482 @@
                 </div>
                 <span>Puntos: 0</span>
             </div>
-            <div class="avatar">
-                <!-- Icono de usuario genérico, puedes cambiarlo por una imagen real -->
-                <i class="fa-solid fa-user-astronaut" style="font-size: 1.5rem; color: #0d1f22;"></i>
+            
+            <!-- AVATAR CON MENÚ DESPLEGABLE -->
+            <div class="avatar" id="avatar-principal">
+                <i class="fa-solid fa-user-astronaut" style="font-size: 1.5rem; color: #0d1f22;" id="icono-avatar"></i>
+                <img src="" alt="Foto de perfil" id="foto-perfil" style="display: none;">
+            </div>
+
+            <!-- MENÚ DE OPCIONES DE FOTO -->
+            <div class="menu-perfil" id="menu-perfil">
+                <h4>Elige tu foto</h4>
+                <div class="opciones-foto">
+                    <!-- Opción 1: Byte -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/byte.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/byte.jpg.jpeg" alt="Byte">
+                    </div>
+                    <!-- Opción 2: Chivi -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/chivi.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/chivi.jpg.jpeg" alt="Chivi">
+                    </div>
+                    <!-- Opción 3: Celu -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/celu.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/celu.jpg.jpeg" alt="Celu">
+                    </div>
+                    <!-- Opción 4: Rick -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/RICK.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/RICK.jpg.jpeg" alt="Rick">
+                    </div>
+                    <!-- Opción 5: Piku -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/Piku.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/Piku.jpg.jpeg" alt="Piku">
+                    </div>
+                    <!-- Opción 6: Jack -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/jack.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/jack.jpg.jpeg" alt="Jack">
+                    </div>
+                    <!-- Opción 7: Ari -->
+                    <div class="opcion-foto" onclick="cambiarFoto('file:///C:/ecoverse/Ari.jpg.jpeg')">
+                        <img src="file:///C:/ecoverse/Ari.jpg.jpeg" alt="Ari">
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
+
+    <!-- SECCIÓN DE INICIO -->
+    <section id="inicio" class="seccion">
+        <img src="file:///C:/ecoverse/banner.jpg.jpeg" alt="EcoVerse Banner">
+    </section>
+
+    <!-- SECCIÓN: ¿QUÉ ES RECICLAR? -->
+    <section id="que-es-reciclar" class="seccion">
+        <div class="content-section">
+            <h2 class="section-title">♻️ ¿Qué es el Reciclaje? ♻️</h2>
+            
+            <div class="article-text">
+                <h3><i class="fa-solid fa-book-open"></i> 1. ¿Qué es el Reciclaje? </h3>
+                <p>El reciclaje es un proceso de transformación fisicoquímica o mecánica que sufre un material usado para convertirse en una nueva materia prima. De esta manera, se evita el uso de recursos vírgenes y se reduce el volumen de desperdicios que saturan el planeta.</p>
+                <p>El reciclaje forma parte de la regla de las <strong>3R</strong> (Reducir, Reutilizar y Reciclar), siendo el último recurso cuando un objeto ya no puede volver a ser utilizado en su forma original.</p>
+
+                <h3><i class="fa-solid fa-recycle"></i> 2. El Proceso del Reciclaje </h3>
+                <p>Para que el reciclaje funcione en la web o en la sociedad, requiere de un circuito cerrado compuesto por tres pasos esenciales:</p>
+                <ul>
+                    <li><strong>Recolección y separación:</strong> Los ciudadanos separan los residuos y los depositan en los contenedores correctos (plástico, papel, vidrio). Los servicios municipales o empresas privadas los trasladan a las plantas de clasificación.</li>
+                    <li><strong>Procesamiento y fabricación:</strong> En las plantas de reciclaje, los materiales se limpian, trituran, funden o procesan para transformarlos en materias primas secundarias (como pellets de plástico o pulpa de papel) que se venden a los fabricantes.</li>
+                    <li><strong>Compra de productos reciclados:</strong> El ciclo se cierra cuando las empresas crean nuevos productos con este material y los consumidores los compran, incentivando el mercado sostenible.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-boxes-stacked"></i> 3. ¿Qué Materiales se Pueden Reciclar?</h3>
+                <ul>
+                    <li><strong>Papel y Cartón:</strong> Periódicos, revistas, cajas de embalaje y folletos.</li>
+                    <li><strong>Plásticos:</strong> Botellas de bebidas (PET), envases de detergente (PEAD) y bolsas transparentes.</li>
+                    <li><strong>Vidrio:</strong> Botellas de vino, frascos de alimentos y tarros de conservas.</li>
+                    <li><strong>Metales:</strong> Latas de aluminio (refrescos) y latas de acero/hojalata (conservas).</li>
+                    <li><strong>Baterías y Electrónicos:</strong> Requieren un proceso especial en centros de acopio debido a sus componentes tóxicos.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-earth-americas"></i> 4. Beneficios del Reciclaje (Sección de Impacto)</h3>
+                <ul>
+                    <li><strong>Conservación de recursos naturales:</strong> Salva árboles, agua y minerales esenciales al reutilizar lo que ya existe.</li>
+                    <li><strong>Ahorro de energía:</strong> Fabricar un producto desde cero (por ejemplo, una lata de aluminio virgen) consume mucha más energía que fundir una lata ya usada.</li>
+                    <li><strong>Reducción de la contaminación:</strong> Disminuye las emisiones de gases de efecto invernadero que aceleran el cambio climático y evita que los plásticos terminen en los océanos.</li>
+                    <li><strong>Creación de empleo:</strong> La industria del reciclaje genera miles de puestos de trabajo en recolección, procesamiento y ecodiseño.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-link"></i> 5. Enlaces de Interés y Fuentes Oficiales</h3>
+                <p>Enlaces por si te interece saber mas:</p>
+                <div class="links-container">
+                    <a href="https://www.epa.gov/recycle" target="_blank" class="link-btn">EPA - Fundamentos y Beneficios</a>
+                    <a href="https://www.nationalgeographic.com/environment/article/plastic-pollution" target="_blank" class="link-btn">National Geographic - Crisis del Plástico</a>
+                    <a href="https://www.gob.mx/bienestar" target="_blank" class="link-btn">Secretaría de Bienestar de México</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CLASIFICA TU BASURA -->
+    <section id="clasifica-basura" class="seccion">
+        <div class="content-section">
+            <h2 class="section-title">🗑️Guía de Clasificación de Residuos🗑️</h2>
+            
+            <div class="article-text">
+                <h3><i class="fa-solid fa-globe"></i> Guía Global de Reciclaje y Clasificación de Residuos: México y Corea del Sur</h3>
+                <p>El crecimiento de la población urbana y el consumo masivo han transformado la gestión de residuos en uno de los mayores desafíos del siglo XXI. La transición hacia una economía circular ya no es opcional; requiere que ciudadanos, empresas y gobiernos adopten sistemas estrictos de separación de basura. A continuación, analizamos a fondo el modelo normativo de México y el exitoso caso de éxito internacional de Corea del Sur.</p>
+
+                <h3><i class="fa-solid fa-flag"></i> 🇲🇽 1. El Sistema de Clasificación en México</h3>
+                <p>En México, la gestión de residuos sólidos urbanos se basa en normativas oficiales (como la Norma Ambiental NADF-024 en la capital y homólogas estatales). El objetivo principal es separar los materiales desde el origen para evitar que terminen en los miles de tiraderos a cielo abierto o rellenos sanitarios del país. El modelo mexicano divide la basura en cuatro categorías fundamentales:</p>
+                
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">A. Orgánicos Biodegradables</h4>
+                <p>Son todos aquellos residuos de origen natural que pueden descomponerse de forma biológica para transformarse en compost (abono orgánico) o biogás.</p>
+                <ul>
+                    <li><strong>Qué incluye:</strong> Restos de verduras, cáscaras de fruta, sobrantes de comida, huesos, restos de café y té, hojarasca, flores, pasto y pequeñas ramas de jardinería.</li>
+                </ul>
+
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">B. Inorgánicos Reciclables</h4>
+                <p>Materiales que han completado su primer ciclo de vida útil pero cuya composición permite que sean fundidos, triturados o procesados para convertirse en nuevas materias primas.</p>
+                <ul>
+                    <li><strong>Qué incluye:</strong> Botellas de plástico (PET y PEAD), envases de vidrio (transparentes y de color), latas de aluminio (refrescos) y hojalata (conservas), cartón, papel de oficina, periódicos, revistas y envases de tetrapak.</li>
+                    <li><strong>Requisito clave:</strong> Para que puedan ser procesados en las plantas de reciclaje de México, deben entregarse vacíos, enjuagados y secos. El material sucio o con grasa arruina lotes enteros de reciclaje.</li>
+                </ul>
+
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">C. Inorgánicos No Reciclables</h4>
+                <p>Residuos que, debido a su uso, mezcla de componentes o degradación, no pueden volver a integrarse en una cadena productiva. Son los que comúnmente terminan en el destino final del camión de la basura.</p>
+                <ul>
+                    <li><strong>Qué incluye:</strong> Pañuelos desechables, toallas sanitarias, pañales, colillas de cigarro, bolsas de botanas (metalizadas), calzado, colágeno/plásticos de un solo uso muy delgados, unicel, bolígrafos usados y preservativos.</li>
+                </ul>
+
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">D. Residuos de Manejo Especial y Voluminosos</h4>
+                <p>Objetos de gran tamaño o aparatos electrónicos que contienen elementos pesados o tóxicos. Por ley, está estrictamente prohibido entregarlos al camión recolector convencional o abandonarlos en la vía pública.</p>
+                <ul>
+                    <li><strong>Qué incluye:</strong> Computadoras, teléfonos celulares, televisores, electrodomésticos (licuadoras, microondas), colchones, muebles viejos, llantas y baterías domésticas.</li>
+                    <li><strong>Cómo se desechan:</strong> Deben llevarse a centros de acopio especializados, participar en jornadas de "Reciclatrón" o entregarse a los servicios de recolección especial de cada municipio.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-flag"></i> 🇰🇷 2. Caso Extra de Éxito Internacional: El Modelo de Corea del Sur</h3>
+                <p>Corea del Sur es un referente mundial en sustentabilidad. A mediados de la década de 1990, el país asiático implementó la ley del Jongnyangje (종량제), un sistema basado en el principio de "el que contamina, paga". Este modelo modificó por completo la conducta de la sociedad civil mediante incentivos económicos y penalizaciones severas. El sistema coreano destaca por cuatro pilares operativos únicos:</p>
+                
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">A. Bolsas Prepago Obligatorias por Distrito (Gu)</h4>
+                <p>En Corea del Sur no se puede usar cualquier bolsa para la basura general. Los ciudadanos deben comprar bolsas oficiales de plástico en los supermercados de su barrio. El costo de la bolsa incluye la tarifa de recolección y procesamiento del residuo.</p>
+                <ul>
+                    <li>Si utilizas una bolsa normal o una bolsa de otro distrito, el camión no se llevará la basura y las cámaras de seguridad municipales te identificarán para aplicarte una multa de hasta 1,000,000 de wones (aproximadamente $750 USD).</li>
+                </ul>
+
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">B. Regla Estricta para la Comida ("Si un animal no lo come, no es orgánico")</h4>
+                <p>La comida desperdiciada se procesa meticulosamente para fabricar fertilizantes agrícolas o alimento procesado para ganado. Debido a esto, la separación de la categoría Eumsikmul Sseuregi (Residuos de Alimentos) tiene reglas extremas.</p>
+                <ul>
+                    <li><strong>Basura Orgánica:</strong> Restos de comida cocinada, arroz, pan, frutas blandas y verduras.</li>
+                    <li><strong>Basura General (Excepciones):</strong> Elementos duros que una máquina trituradora o un animal no podrían procesar. Aquí entran los huesos de res o pollo, espinas de pescado, cáscaras de huevo, cáscaras de nueces, bolsas de té y las raíces duras de plantas como la cebolla o el ajo.</li>
+                </ul>
+
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">C. Contenedores Inteligentes con Tecnología RFID</h4>
+                <p>En los complejos modernos de apartamentos de Seúl y otras grandes ciudades, las bolsas de comida han sido sustituidas por contenedores automatizados con lectores RFID. Cada residente tiene una tarjeta personal; al pasarla por el contenedor, la tapa se abre, el ciudadano vierte la comida suelta, la báscula interna calcula el peso exacto en gramos y el cargo se añade directamente a la factura mensual de servicios del departamento.</p>
+
+                <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">D. Clasificación Extrema de Reciclables (Jaehwaryongpum)</h4>
+                <p>La separación en las estaciones de reciclaje coreanas es sumamente minuciosa:</p>
+                <ul>
+                    <li><strong>PET Transparente:</strong> Las botellas de agua deben estar libres de líquido, aplastadas y es obligatorio desprender por completo la etiqueta plástica de la marca, la cual va a un contenedor diferente (Vinilo).</li>
+                    <li><strong>Vinilo (Vinyl):</strong> Bolsas plásticas de supermercado, envolturas de golosinas y plásticos delgados para empaque tienen su propio contenedor exclusivo. Si están sucios con comida, deben lavarse antes de tirarlos.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-table"></i> 📊 3. Comparativa de Modelos: México vs. Corea del Sur</h3>
+                <table class="tabla-comparativa">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Modelo Mexicano 🇲🇽</th>
+                            <th>Modelo Coreano 🇰🇷</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Enfoque Principal</strong></td>
+                            <td>Clasificación por tipo de material (Norma NADF-024)</td>
+                            <td>Pago por volumen generado (Jongnyangje)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Financiamiento</strong></td>
+                            <td>Servicio público financiado por impuestos generales</td>
+                            <td>Compra obligatoria de bolsas oficiales del distrito</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Residuos de Comida</strong></td>
+                            <td>Compostaje general en plantas delegacionales</td>
+                            <td>Transformación en alimento animal y fertilizante técnico</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tecnología</strong></td>
+                            <td>Recolección manual en camiones municipales</td>
+                            <td>Sensores de peso RFID y chips de rastreo en edificios</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nivel de Sanción</strong></td>
+                            <td>Multas bajas o nulas para ciudadanos individuales</td>
+                            <td>Multas severas automáticas rastreadas por cámaras públicas</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fa-solid fa-link"></i>  4. Fuentes Oficiales para Enlazar en tu Web</h3>
+                <p>Enlaces por si te interece saber mas:</p>
+                <div class="links-container">
+                    <a href="https://www.sedema.cdmx.gob.mx/" target="_blank" class="link-btn">SEDEMA - Normativas México</a>
+                    <a href="https://eng.me.go.kr/" target="_blank" class="link-btn">Min. Medio Ambiente Corea del Sur</a>
+                    <a href="https://www.oecd.org/" target="_blank" class="link-btn">OCDE - Reportes Globales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: IMPORTANCIA -->
+    <section id="importancia" class="seccion">
+        <div class="content-section">
+            <h2 class="section-title">🌍La Importancia de Separar la Basura🌍</h2>
+            
+            <div class="article-text" style="margin-bottom: 30px;">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> ¿Por qué cada residuo cuenta?</h3>
+                <p>Separar los residuos desde el origen —es decir, desde nuestros hogares, escuelas y lugares de trabajo— no es un simple acto de orden o una recomendación ecológica superficial; es el motor fundamental que sostiene la economía circular y la salud del planeta.</p>
+                <p>Cuando arrojamos todos los desechos en un mismo contenedor, provocamos un fenómeno conocido como <strong>contaminación cruzada</strong>. Un pedazo de cartón perfectamente reciclable se vuelve completamente inservible si se llena de grasa de comida o restos de fluidos. Por ello, la separación es el único puente que permite convertir un desecho en un recurso valioso.</p>
+            </div>
+
+            <div class="importancia-grid">
+                <div class="importancia-card full-width">
+                    <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?q=80&w=1000&auto=format&fit=crop" alt="Impacto Ambiental">
+                    <div class="importancia-card-content">
+                        <h3><i class="fa-solid fa-earth-americas"></i> 🌍 1. Impacto Ambiental: Frenar la Crisis Climática</h3>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Reducción de la saturación en vertederos</h4>
+                        <p>La mayoría de las ciudades del mundo enfrentan una crisis de espacio en sus rellenos sanitarios y tiraderos a cielo abierto. Al separar los materiales orgánicos y los reciclables, reducimos drásticamente el volumen de basura real que requiere ser enterrada. Esto alarga la vida útil de los vertederos actuales y evita la necesidad de destruir nuevos ecosistemas para abrir otros espacios de confinamiento.</p>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Disminución de los Gases de Efecto Invernadero (GEI)</h4>
+                        <p>Cuando la materia orgánica (restos de comida, jardinería) se entierra mezclada con plásticos y metales en un vertedero, se descompone en ausencia de oxígeno (de forma anaerobia). Este proceso genera grandes cantidades de metano (CH₄), un gas de efecto invernadero hasta 28 veces más potente que el dióxido de carbono en su capacidad para calentar la atmósfera. Separar la materia orgánica permite procesarla mediante compostaje aeróbico o biodigestores, mitigando el calentamiento global.</p>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Conservación de la biodiversidad y los ecosistemas</h4>
+                        <p>La fabricación de productos a partir de materiales vírgenes exige una explotación agresiva de la naturaleza: tala de bosques para obtener papel, minería a cielo abierto para extraer aluminio y perforación petrolera para sintetizar plásticos. Separar y reciclar permite que la industria se abastezca de "minas urbanas" (los propios residuos), deteniendo la deforestación y la destrucción de hábitats naturales.</p>
+                    </div>
+                </div>
+
+                <div class="importancia-card">
+                    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1000&auto=format&fit=crop" alt="Impacto Energético">
+                    <div class="importancia-card-content">
+                        <h3><i class="fa-solid fa-bolt"></i> ⚡ 2. Impacto Energético y Económico</h3>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Ahorro masivo de energía y agua</h4>
+                        <p>Procesar un material reciclado consume una fracción de la energía necesaria para extraer y transformar una materia prima virgen. Los datos industriales son contundentes:</p>
+                        <ul>
+                            <li><strong>Aluminio:</strong> Reciclar una lata de aluminio ahorra hasta un 95% de la energía en comparación con fabricarla desde la bauxita (el mineral virgen).</li>
+                            <li><strong>Plástico y Papel:</strong> El reciclaje de plástico reduce el consumo energético en aproximadamente un 70%, mientras que el papel reciclado ahorra cerca del 60% de energía y miles de litros de agua por tonelada.</li>
+                        </ul>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Estímulo a la Economía Circular</h4>
+                        <p>La basura mezclada es un gasto público enorme para los municipios. En cambio, la basura separada es una fuente de ingresos y empleo. La cadena de separación, recolección especializada, clasificación fina y procesamiento industrial genera millones de empleos verdes a nivel global, impulsando un modelo económico donde nada se desperdicia y todo se reintroduce al mercado.</p>
+                    </div>
+                </div>
+
+                <div class="importancia-card">
+                    <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=1000&auto=format&fit=crop" alt="Impacto Social">
+                    <div class="importancia-card-content">
+                        <h3><i class="fa-solid fa-heart-pulse"></i> 🩺 3. Impacto Social y de Salud Pública</h3>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Dignificación del trabajo de los recolectores</h4>
+                        <p>En muchos países de América Latina, miles de personas (conocidas como recuperadores, recicladores urbanos o pepenadores) viven de recolectar materiales reciclables directamente de los camiones o vertederos. Entregar la basura ya separada y limpia protege su salud de infecciones, cortes con vidrios rotos o contacto con residuos peligrosos, además de eficientar su labor económica.</p>
+                        <h4 style="color: #8ce563; margin-top: 15px; margin-bottom: 5px;">Prevención de la contaminación de acuíferos</h4>
+                        <p>Cuando los residuos electrónicos, pilas o productos químicos no reciclables se tiran junto a la basura común, los líquidos de la lluvia disuelven sus componentes tóxicos (plomo, mercurio, cadmio). Esto genera un líquido altamente contaminante llamado lixiviado, el cual se filtra al subsuelo, contaminando los mantos acuíferos que abastecen de agua potable a comunidades enteras.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-text">
+                <h3><i class="fa-solid fa-link"></i>  Fuentes Oficiales sobre el Impacto de la Separación</h3>
+                <p>Enlaces interesantes:</p>
+                <div class="links-container">
+                    <a href="https://www.unep.org/es" target="_blank" class="link-btn">PNUMA - Gestión de Residuos</a>
+                    <a href="https://www.greenpeace.org/" target="_blank" class="link-btn">Greenpeace Internacional</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: DATOS CURIOSOS -->
+    <section id="datos-curiosos" class="seccion">
+        <div class="content-section">
+            <h2 class="section-title">📊 Datos Curiosos y Estadísticas 📊</h2>
+            
+            <div class="article-text" style="margin-bottom: 30px;">
+                <h3><i class="fa-solid fa-lightbulb"></i> ¿Sabías que...?</h3>
+                <p>El reciclaje está lleno de datos sorprendentes que nos ayudan a entender la magnitud de nuestro impacto en el planeta. Aquí tienes una recopilación de estadísticas impactantes tanto de México como del mundo.</p>
+            </div>
+
+            <div class="curiosos-grid">
+                <div class="curioso-card full-width">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop" alt="México Reciclaje">
+                    <div class="curioso-card-content">
+                        <h4><i class="fa-solid fa-flag"></i> 🇲🇽 El Panorama en México</h4>
+                        <p style="margin-bottom: 10px;"><strong>Montañas de basura diarias:</strong> En México se generan aproximadamente 139,902 toneladas de residuos sólidos urbanos cada día. De esta enorme cantidad, un <strong>36.26%</strong> corresponde a materiales que podrían aprovecharse o reciclarse por completo si se separaran correctamente desde casa.</p>
+                        <p style="margin-bottom: 10px;"><strong>Líder continental en PET:</strong> México es un verdadero gigante del reciclaje de botellas plásticas. Alcanzó una tasa de acopio de PET del <strong>64%</strong>, lo que posiciona al país como el líder absoluto en toda América, superando a Brasil (56%) y a Estados Unidos (28%).</p>
+                        <p><strong>El reto del hogar:</strong> En promedio, una sola familia mexicana genera más de <strong>tres kilos de basura al día</strong>. Si esa basura no se separa, el 75.2% termina enterrado definitivamente en rellenos sanitarios que corren el riesgo de saturarse muy pronto.</p>
+                    </div>
+                </div>
+
+                <div class="curioso-card">
+                    <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?q=80&w=1000&auto=format&fit=crop" alt="Contaminación Plástico">
+                    <div class="curioso-card-content">
+                        <h4><i class="fa-solid fa-bottle-water"></i> 🧴 El Plástico</h4>
+                        <p style="margin-bottom: 10px;"><strong>Eternos en el planeta:</strong> Una simple botella de plástico tarda hasta <strong>500 años</strong> en descomponerse por completo en un vertedero.</p>
+                        <p style="margin-bottom: 10px;"><strong>El tamaño del problema:</strong> Cada año se arroja al océano tal cantidad de plástico que se podría dar la vuelta al mundo 10 veces con ella. Esta contaminación genera parches de basura marina gigantescos; el más grande ya es <strong>tres veces el tamaño de Francia</strong>.</p>
+                        <p><strong>Ropa del futuro:</strong> El plástico reciclado no solo hace más botellas. Gran parte del PET recolectado y limpio se procesa en hilos textiles para fabricar ropa deportiva, mochilas y calzado.</p>
+                    </div>
+                </div>
+
+                <div class="curioso-card">
+                    <img src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?q=80&w=1000&auto=format&fit=crop" alt="Aluminio Reciclaje">
+                    <div class="curioso-card-content">
+                        <h4><i class="fa-solid fa-can-food"></i> 🥤 El Aluminio (El material perfecto)</h4>
+                        <p style="margin-bottom: 10px;"><strong>Inmortalidad industrial:</strong> El aluminio es <strong>100% e infinitamente reciclable</strong>. Puede fundirse una y otra vez para convertirse en nuevas latas sin perder jamás su calidad o propiedades.</p>
+                        <p><strong>Oro líquido de energía:</strong> Fabricar una lata usando aluminio reciclado ahorra un <strong>95% de la energía</strong> en comparación con hacerla desde cero extrayendo el mineral original (bauxita).</p>
+                    </div>
+                </div>
+
+                <div class="curioso-card full-width">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1000&auto=format&fit=crop" alt="Vidrio y Papel">
+                    <div class="curioso-card-content">
+                        <h4><i class="fa-solid fa-wine-bottle"></i> 🍾 El Vidrio y el Papel</h4>
+                        <p style="margin-bottom: 10px;"><strong>El campeón del tiempo:</strong> El vidrio tarda cerca de <strong>4,000 años</strong> en degradarse en la naturaleza. Sin embargo, al igual que el aluminio, se puede reciclar de forma infinita sin perder pureza. Reciclar una sola botella de vidrio ahorra la energía necesaria para mantener encendido un foco durante 4 horas.</p>
+                        <p><strong>Héroes forestales:</strong> Por cada tonelada de papel o cartón que se logra reciclar con éxito, se salvan <strong>17 árboles adultos</strong>, además de ahorrar unos 26,000 litros de agua y 4,000 kWh de energía en los procesos industriales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-text" style="margin-top: 30px;">
+                <h3><i class="fa-solid fa-hourglass-half"></i> 💡 ¿Cuánto tardan en desaparecer?</h3>
+           
+                
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🍎</div>
+                        <div class="timeline-text">Cáscara de fruta</div>
+                        <div class="timeline-time">2 a 4 semanas</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🥤</div>
+                        <div class="timeline-text">Envase de Tetrapak</div>
+                        <div class="timeline-time">30 años</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🥫</div>
+                        <div class="timeline-text">Lata de aluminio</div>
+                        <div class="timeline-time">200 a 500 años</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🧴</div>
+                        <div class="timeline-text">Botella de plástico</div>
+                        <div class="timeline-time">500 años</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🍾</div>
+                        <div class="timeline-text">Botella de vidrio</div>
+                        <div class="timeline-time">4,000 años</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: APRENDE JUGANDO (ESTILO INICIO) -->
+    <section id="aprende-jugando" class="seccion">
+        <img src="file:///C:/ecoverse/bannerjuego.jpg.jpeg" alt="Juego en Proceso - EcoVerse">
+    </section>
+
+    <!-- SCRIPT PARA CAMBIAR ENTRE SECCIONES Y PERFIL -->
+    <script>
+        // --- 1. LÓGICA DE NAVEGACIÓN ---
+        const btnInicio = document.getElementById('btn-inicio');
+        const btnReciclar = document.getElementById('btn-reciclar');
+        const btnClasifica = document.getElementById('btn-clasifica');
+        const btnImportancia = document.getElementById('btn-importancia');
+        const btnDatos = document.getElementById('btn-datos');
+        const btnJuego = document.getElementById('btn-juego');
+
+        const seccionInicio = document.getElementById('inicio');
+        const seccionReciclar = document.getElementById('que-es-reciclar');
+        const seccionClasifica = document.getElementById('clasifica-basura');
+        const seccionImportancia = document.getElementById('importancia');
+        const seccionDatos = document.getElementById('datos-curiosos');
+        const seccionJuego = document.getElementById('aprende-jugando');
+
+        function ocultarTodo() {
+            seccionInicio.style.display = 'none';
+            seccionReciclar.style.display = 'none';
+            seccionClasifica.style.display = 'none';
+            seccionImportancia.style.display = 'none';
+            seccionDatos.style.display = 'none';
+            seccionJuego.style.display = 'none';
+            
+            btnInicio.classList.remove('active');
+            btnReciclar.classList.remove('active');
+            btnClasifica.classList.remove('active');
+            btnImportancia.classList.remove('active');
+            btnDatos.classList.remove('active');
+            btnJuego.classList.remove('active');
+        }
+
+        function mostrarInicio(e) {
+            if(e) e.preventDefault();
+            ocultarTodo();
+            seccionInicio.style.display = 'flex';
+            btnInicio.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mostrarReciclar(e) {
+            if(e) e.preventDefault();
+            ocultarTodo();
+            seccionReciclar.style.display = 'flex';
+            btnReciclar.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mostrarClasifica(e) {
+            if(e) e.preventDefault();
+            ocultarTodo();
+            seccionClasifica.style.display = 'flex';
+            btnClasifica.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mostrarImportancia(e) {
+            if(e) e.preventDefault();
+            ocultarTodo();
+            seccionImportancia.style.display = 'flex';
+            btnImportancia.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mostrarDatos(e) {
+            if(e) e.preventDefault();
+            ocultarTodo();
+            seccionDatos.style.display = 'flex';
+            btnDatos.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function mostrarJuego(e) {
+            if(e) e.preventDefault();
+            ocultarTodo();
+            seccionJuego.style.display = 'flex';
+            btnJuego.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        btnInicio.addEventListener('click', mostrarInicio);
+        btnReciclar.addEventListener('click', mostrarReciclar);
+        btnClasifica.addEventListener('click', mostrarClasifica);
+        btnImportancia.addEventListener('click', mostrarImportancia);
+        btnDatos.addEventListener('click', mostrarDatos);
+        btnJuego.addEventListener('click', mostrarJuego);
+
+        // --- 2. LÓGICA DE PERFIL ---
+        const avatarPrincipal = document.getElementById('avatar-principal');
+        const menuPerfil = document.getElementById('menu-perfil');
+        const iconoAvatar = document.getElementById('icono-avatar');
+        const fotoPerfil = document.getElementById('foto-perfil');
+
+        // Abrir/Cerrar menú al hacer clic en el avatar
+        avatarPrincipal.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            menuPerfil.classList.toggle('visible');
+        });
+
+        // Cerrar menú al hacer clic fuera de él
+        document.addEventListener('click', (e) => {
+            if (!menuPerfil.contains(e.target) && !avatarPrincipal.contains(e.target)) {
+                menuPerfil.classList.remove('visible');
+            }
+        });
+
+        // Función para cambiar la foto
+        function cambiarFoto(rutaImagen) {
+            iconoAvatar.style.display = 'none';
+            fotoPerfil.src = rutaImagen;
+            fotoPerfil.style.display = 'block';
+            menuPerfil.classList.remove('visible');
+        }
+    </script>
 
 </body>
 </html>
