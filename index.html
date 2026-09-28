@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoVerse </title>
+    <!-- Importamos la librería de iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Importamos la fuente Nunito de Google Fonts para un look redondeado -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            /* Fondo de cielo/paisaje simulado para que contraste */
+            background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        /* Contenedor principal de la barra */
+        .navbar {
+            background-color: #0d1f22; /* Color oscuro de fondo */
+            width: 98%;
+            height: 70px;
+            border-radius: 50px; /* Bordes redondeados */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid #000; /* Borde negro sutil */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- SECCIÓN LOGO --- */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+            width: 180px;
+        }
+
+        /* Icono de reciclaje grande */
+        .logo-icon {
+            font-size: 3rem;
+            color: #4cd964; /* Verde brillante */
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* Texto del logo */
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            color: white;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .logo-text span:first-child {
+            font-size: 1.2rem;
+            color: #4cd964;
+            text-shadow: 1px 1px 0 #000;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span:last-child {
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 2px 2px 0 #000;
+            margin-top: -5px;
+        }
+
+        /* --- SECCIÓN MENÚ --- */
+        .menu-items {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            height: 100%;
+            padding: 0 10px;
+            transition: all 0.2s;
+        }
+
+        .menu-item i {
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        /* Estilo específico para el item activo (Inicio) */
+        .menu-item.active {
+            color: #aaffaa; /* Verde claro */
+        }
+        
+        .menu-item.active i {
+            color: #4cd964; /* Icono verde */
+        }
+
+        /* La línea verde debajo de Inicio */
+        .menu-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 12px; /* Ajustar según altura */
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #4cd964;
+            border-radius: 2px;
+        }
+
+        /* Separadores verticales sutiles entre items (opcional) */
+        .menu-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            height: 40%;
+            width: 1px;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* --- BOTÓN VERDE "EMPIEZA A RECICLAR" --- */
+        .cta-button {
+            background-color: #8ce563; /* Verde lima */
+            color: #0d1f22;
+            font-weight: 900;
+            font-size: 0.9rem;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: rotate(-2deg); /* Ligera inclinación */
+            box-shadow: 2px 2px 0px #000;
+            cursor: pointer;
+            text-transform: uppercase;
+            line-height: 1;
+            margin: 0 10px;
+            /* Efecto de borde irregular simulado con clip-path o borders, aquí usamos simple */
+            clip-path: polygon(
+                0% 10%, 5% 0%, 95% 5%, 100% 15%, 
+                98% 85%, 95% 100%, 5% 95%, 2% 90%
+            );
+        }
+
+        .cta-button i {
+            font-size: 1.2rem;
+        }
+
+        /* --- SECCIÓN PERFIL --- */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-right: 15px;
+        }
+
+        .score-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .score-display .stars {
+            color: #ffcc00; /* Color estrella */
+            font-size: 0.8rem;
+            margin-bottom: 2px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Ajustes para pantallas pequeñas para que no se rompa */
+        @media (max-width: 1200px) {
+            .menu-item span { display: none; } /* Ocultar texto, dejar iconos */
+            .menu-item { gap: 0; }
+            .menu-item.active::after { bottom: 15px; }
+            .cta-button span { display: none; } /* Ocultar texto botón */
+            .cta-button { padding: 10px; border-radius: 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- 1. Logo EcoVerse -->
+        <div class="logo-section">
+            <i class="fa-solid fa-recycle logo-icon"></i>
+            <div class="logo-text">
+                <span>EcoVerse</span>
+                <span>OFICIAL</span>
+            </div>
+        </div>
+
+        <!-- 2. Menú de Navegación -->
+        <div class="menu-items">
+            <!-- Inicio (Activo) -->
+            <a href="#" class="menu-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <!-- ¿Qué es reciclar? -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>¿Qué es reciclar?</span>
+            </a>
+
+            <!-- Clasifica tu basura -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-trash-can"></i>
+                <span>Clasifica tu basura</span>
+            </a>
+
+            <!-- Importancia -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-earth-americas"></i>
+                <span>Importancia</span>
+            </a>
+
+            <!-- Datos curiosos -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-star"></i>
+                <span>Datos curiosos</span>
+            </a>
+
+            <!-- Aprende jugando -->
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Aprende jugando</span>
+            </a>
+        </div>
+
+        <!-- 3. Botón CTA -->
+        <button class="cta-button">
+            <i class="fa-solid fa-leaf"></i>
+            <span>¡Empieza a reciclar!</span>
+        </button>
+
+        <!-- 4. Perfil y Puntos -->
+        <div class="profile-section">
+            <div class="score-display">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <span>Puntos: 0</span>
+            </div>
+            <div class="avatar">
+                <!-- Icono de usuario genérico, puedes cambiarlo por una imagen real -->
+                <i class="fa-solid fa-user-astronaut" style="font-size: 1.5rem; color: #0d1f22;"></i>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>
