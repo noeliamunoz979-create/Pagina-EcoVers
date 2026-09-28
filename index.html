@@ -304,35 +304,39 @@
             align-items: center;
         }
 
+        /* SECCIÓN INICIO: Imagen a pantalla completa sin bordes */
         #inicio {
             display: flex;
-            height: calc(100vh - 100px);
-            padding: 0 20px;
+            width: 100%;
+            height: calc(100vh - 100px); /* Ocupa toda la altura menos la barra */
+            padding: 0; /* Sin padding */
         }
 
         #inicio img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cubre todo el espacio */
+            border-radius: 0; /* Sin bordes redondeados */
+            box-shadow: none; /* Sin sombra */
         }
 
+        /* SECCIÓN APRENDE JUGANDO: Imagen a pantalla completa sin bordes */
         #aprende-jugando {
             display: flex;
+            width: 100%;
             height: calc(100vh - 100px);
-            padding: 0 20px;
+            padding: 0;
             justify-content: center;
             align-items: center;
         }
 
         #aprende-jugando img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 3px solid #4cd964;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cubre todo el espacio */
+            border-radius: 0;
+            box-shadow: none;
+            border: none; /* Sin borde verde */
         }
 
         .content-section {
@@ -626,10 +630,6 @@
             .cta-button { padding: 10px; border-radius: 50%; }
             .section-title { font-size: 1.8rem; }
             .article-text { padding: 20px; }
-            #inicio { height: auto; padding: 20px; }
-            #inicio img { max-height: 70vh; }
-            #aprende-jugando { height: auto; padding: 20px; }
-            #aprende-jugando img { max-height: 70vh; }
             
             .tabla-comparativa th, .tabla-comparativa td {
                 padding: 8px;
