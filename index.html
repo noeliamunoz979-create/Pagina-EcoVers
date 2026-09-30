@@ -317,7 +317,7 @@
             object-fit: contain;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            cursor: pointer; /* Cursor de mano para indicar que es clickeable */
+            cursor: pointer;
         }
 
         #aprende-jugando {
@@ -1207,9 +1207,29 @@
         </div>
     </section>
 
-    <!-- SECCIÓN: APRENDE JUGANDO (IMAGEN: telefono.jpg.jpeg) -->
+    <!-- SECCIÓN: APRENDE JUGANDO (CON MAPA DE COORDENADAS) -->
     <section id="aprende-jugando" class="seccion">
-        <img src="telefono.jpg.jpeg" alt="Juego en Proceso - EcoVerse">
+        <!-- 
+            IMPORTANTE: Reemplaza "TU_IMAGEN_AQUI.jpg" con el nombre real de tu archivo de imagen.
+            Las coordenadas del <map> están basadas en una imagen de 1200x600 píxeles.
+            Si tu imagen es más grande o más pequeña, ajusta los valores de "coords" proporcionalmente.
+        -->
+        <img src="telefono.jpg.jpeg" alt="Juego en Proceso - EcoVerse" usemap="#mapa-juego">
+        
+        <map name="mapa-juego">
+            <!-- 
+                Zona Izquierda (Botón APRENDE) -> Lleva a "¿Qué es reciclar?"
+                Coordenadas: (x1,y1,x2,y2) = esquina superior izquierda, esquina inferior derecha
+                Aquí: 0,0 a 600,600 (mitad izquierda de una imagen de 1200x600)
+            -->
+            <area shape="rect" coords="0,0,600,600" href="#" onclick="mostrarReciclar(); return false;" alt="Aprende">
+            
+            <!-- 
+                Zona Derecha (Botón EXPLORA) -> Lleva a "Importancia"
+                Coordenadas: 600,0 a 1200,600 (mitad derecha de una imagen de 1200x600)
+            -->
+            <area shape="rect" coords="600,0,1200,600" href="#" onclick="mostrarImportancia(); return false;" alt="Explora">
+        </map>
     </section>
 
     <!-- SCRIPT PARA CAMBIAR ENTRE SECCIONES Y PERFIL -->
@@ -1306,20 +1326,17 @@
         const iconoAvatar = document.getElementById('icono-avatar');
         const fotoPerfil = document.getElementById('foto-perfil');
 
-        // Abrir/Cerrar menú al hacer clic en el avatar
         avatarPrincipal.addEventListener('click', (e) => {
             e.stopPropagation(); 
             menuPerfil.classList.toggle('visible');
         });
 
-        // Cerrar menú al hacer clic fuera de él
         document.addEventListener('click', (e) => {
             if (!menuPerfil.contains(e.target) && !avatarPrincipal.contains(e.target)) {
                 menuPerfil.classList.remove('visible');
             }
         });
 
-        // Función para cambiar la foto
         function cambiarFoto(rutaImagen) {
             iconoAvatar.style.display = 'none';
             fotoPerfil.src = rutaImagen;
