@@ -329,7 +329,7 @@
             display: none;
         }
 
-        /* --- ZONAS CLICKEABLES SOBRE LA IMAGEN DE INICIO --- */
+        /* --- ZONAS CLICKEABLES SOBRE LAS IMÁGENES --- */
         .zona-click {
             position: absolute;
             cursor: pointer;
@@ -337,7 +337,15 @@
             /* border: 2px dashed red; */ /* Descomenta para ver las zonas */
         }
 
-        /* Botón "APRENDE" en computadora (recuadro verde inferior izquierdo) */
+        /* BOTÓN "COMENZAR" (verde grande, centro-izquierda) */
+        .zona-comenzar {
+            bottom: 28%;
+            left: 22%;
+            width: 20%;
+            height: 8%;
+        }
+
+        /* BOTÓN "APRENDE" (recuadro verde, abajo izquierda) */
         .zona-aprende {
             bottom: 8%;
             left: 26%;
@@ -345,10 +353,18 @@
             height: 12%;
         }
 
-        /* Botón "EXPLORA" en computadora (recuadro amarillo inferior derecho) */
+        /* BOTÓN "JUEGA" (recuadro azul, al lado del verde) */
+        .zona-juega {
+            bottom: 8%;
+            left: 44%;
+            width: 16%;
+            height: 12%;
+        }
+
+        /* BOTÓN "EXPLORA" (recuadro amarillo, abajo derecha) */
         .zona-explora {
             bottom: 8%;
-            left: 56%;
+            left: 62%;
             width: 16%;
             height: 12%;
         }
@@ -840,20 +856,36 @@
             }
 
             /* --- AJUSTE DE ZONAS CLICKEABLES PARA CELULAR --- */
-            /* Botón "APRENDE" (verde grande en el centro-izquierda) */
-            .zona-aprende {
-                bottom: 18%;
+            /* Botón "COMENZAR" (verde grande, centro-izquierda) */
+            .zona-comenzar {
+                bottom: 28%;
                 left: 5%;
-                width: 50%;
-                height: 25%;
+                width: 45%;
+                height: 8%;
             }
 
-            /* Botón "EXPLORA" (si existe a la derecha) */
+            /* Botón "APRENDE" (recuadro verde, abajo izquierda) */
+            .zona-aprende {
+                bottom: 12%;
+                left: 5%;
+                width: 45%;
+                height: 15%;
+            }
+
+            /* Botón "JUEGA" (recuadro azul, al lado del verde) */
+            .zona-juega {
+                bottom: 12%;
+                left: 52%;
+                width: 45%;
+                height: 15%;
+            }
+
+            /* Botón "EXPLORA" (recuadro amarillo, abajo derecha) */
             .zona-explora {
-                bottom: 18%;
-                left: 55%;
-                width: 40%;
-                height: 25%;
+                bottom: 12%;
+                left: 52%;
+                width: 45%;
+                height: 15%;
             }
         }
     </style>
@@ -953,10 +985,16 @@
         <!-- Imagen para Celular -->
         <img src="telefonodos.jpg.jpeg" alt="EcoVerse Banner Celular" class="img-celular">
         
-        <!-- Zona clickeable: Botón "APRENDE" (izquierda) - Lleva a ¿Qué es reciclar? -->
+        <!-- BOTÓN "COMENZAR" (verde grande) - Lleva a Aprende Jugando -->
+        <div class="zona-click zona-comenzar" onclick="mostrarJuego()" title="Comenzar"></div>
+        
+        <!-- BOTÓN "APRENDE" (recuadro verde) - Lleva a ¿Qué es reciclar? -->
         <div class="zona-click zona-aprende" onclick="mostrarReciclar()" title="Aprende"></div>
         
-        <!-- Zona clickeable: Botón "EXPLORA" (derecha) - Lleva a Importancia -->
+        <!-- BOTÓN "JUEGA" (recuadro azul) - Lleva a Aprende Jugando -->
+        <div class="zona-click zona-juega" onclick="mostrarJuego()" title="Juega"></div>
+        
+        <!-- BOTÓN "EXPLORA" (recuadro amarillo) - Lleva a Importancia -->
         <div class="zona-click zona-explora" onclick="mostrarImportancia()" title="Explora"></div>
     </section>
 
@@ -1274,10 +1312,10 @@
         <!-- Imagen para Celular -->
         <img src="telefono.jpg.jpeg" alt="Juego en Proceso Celular" class="img-celular">
         
-        <!-- Zona clickeable: Botón "APRENDE" (izquierda) - Lleva a ¿Qué es reciclar? -->
+        <!-- BOTÓN "APRENDE" (verde) - Lleva a ¿Qué es reciclar? -->
         <div class="zona-click zona-aprende" onclick="mostrarReciclar()" title="Aprende"></div>
         
-        <!-- Zona clickeable: Botón "EXPLORA" (derecha) - Lleva a Importancia -->
+        <!-- BOTÓN "EXPLORA" (amarillo) - Lleva a Importancia -->
         <div class="zona-click zona-explora" onclick="mostrarImportancia()" title="Explora"></div>
     </section>
 
