@@ -361,10 +361,10 @@
             height: 12%;
         }
 
-        /* BOTÓN "EXPLORA" (recuadro amarillo/naranja, abajo derecha) - Lleva a Datos Curiosos */
+        /* BOTÓN "EXPLORA" (recuadro amarillo/naranja, abajo derecha) - MOVIDO MÁS A LA IZQUIERDA */
         .zona-explora {
             bottom: 8%;
-            left: 62%;
+            left: 56%;
             width: 16%;
             height: 12%;
         }
@@ -855,37 +855,40 @@
                 border: none;
             }
 
-            /* --- AJUSTE DE ZONAS CLICKEABLES PARA CELULAR (MISMAS FUNCIONES QUE EN COMPUTADORA) --- */
-            /* Botón "COMENZAR" (verde grande, centro-izquierda) -> Aprende Jugando */
+            /* --- AJUSTE DE ZONAS CLICKEABLES PARA CELULAR --- */
+            /* Basado en la imagen telefonodos.jpg.jpeg que muestra los botones en la parte inferior */
+
+            /* Botón "COMENZAR" (verde grande) -> Aprende Jugando */
+            /* Está en el centro-izquierda, más arriba que los recuadros */
             .zona-comenzar {
-                bottom: 38%;
-                left: 5%;
-                width: 45%;
-                height: 8%;
+                bottom: 42%;
+                left: 8%;
+                width: 42%;
+                height: 7%;
             }
 
-            /* Botón "APRENDE" (recuadro verde, abajo izquierda) -> ¿Qué es reciclar? */
+            /* Botón "APRENDE" (recuadro verde) -> ¿Qué es reciclar? */
             .zona-aprende {
-                bottom: 12%;
-                left: 5%;
-                width: 45%;
-                height: 15%;
+                bottom: 10%;
+                left: 3%;
+                width: 32%;
+                height: 14%;
             }
 
-            /* Botón "JUEGA" (recuadro azul, al lado del verde) -> Aprende Jugando */
+            /* Botón "JUEGA" (recuadro azul) -> Aprende Jugando */
             .zona-juega {
-                bottom: 12%;
-                left: 52%;
-                width: 45%;
-                height: 15%;
+                bottom: 10%;
+                left: 35%;
+                width: 32%;
+                height: 14%;
             }
 
-            /* Botón "EXPLORA" (recuadro amarillo/naranja, abajo derecha) -> Datos Curiosos */
+            /* Botón "EXPLORA" (recuadro naranja) -> Datos Curiosos */
             .zona-explora {
-                bottom: 12%;
-                left: 52%;
-                width: 45%;
-                height: 15%;
+                bottom: 10%;
+                left: 67%;
+                width: 32%;
+                height: 14%;
             }
         }
     </style>
@@ -994,7 +997,7 @@
         <!-- BOTÓN "JUEGA" (recuadro azul) - Lleva a Aprende Jugando -->
         <div class="zona-click zona-juega" onclick="mostrarJuego()" title="Juega"></div>
         
-        <!-- BOTÓN "EXPLORA" (recuadro amarillo/naranja) - Lleva a Datos Curiosos -->
+        <!-- BOTÓN "EXPLORA" (recuadro naranja) - Lleva a Datos Curiosos -->
         <div class="zona-click zona-explora" onclick="mostrarDatos()" title="Explora"></div>
     </section>
 
