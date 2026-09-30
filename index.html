@@ -304,7 +304,7 @@
             align-items: center;
         }
 
-        /* ESTILO PARA COMPUTADORA (como estaba antes) */
+        /* ESTILO PARA COMPUTADORA */
         #inicio {
             display: flex;
             height: calc(100vh - 100px);
@@ -317,6 +317,7 @@
             object-fit: contain;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: pointer; /* Cursor de mano para indicar que es clickeable */
         }
 
         #aprende-jugando {
@@ -894,9 +895,9 @@
         </div>
     </nav>
 
-    <!-- SECCIÓN DE INICIO (IMAGEN: telefonouno.jpg.jpeg) -->
+    <!-- SECCIÓN DE INICIO (CLICKEABLE PARA IR A APRENDE JUGANDO) -->
     <section id="inicio" class="seccion">
-        <img src="telefonodos.jpg.jpeg" alt="EcoVerse Banner">
+        <img src="telefonodos.jpg.jpeg" alt="EcoVerse Banner" onclick="mostrarJuego()">
     </section>
 
     <!-- SECCIÓN: ¿QUÉ ES RECICLAR? -->
