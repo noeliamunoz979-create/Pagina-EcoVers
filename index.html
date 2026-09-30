@@ -309,6 +309,7 @@
             display: flex;
             height: calc(100vh - 100px);
             padding: 0 20px;
+            position: relative;
         }
 
         #inicio img {
@@ -317,7 +318,39 @@
             object-fit: contain;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Imagen específica para computadora (visible por defecto) */
+        .img-computadora {
+            display: block;
+        }
+        /* Imagen específica para celular (oculta por defecto) */
+        .img-celular {
+            display: none;
+        }
+
+        /* --- ZONAS CLICKEABLES SOBRE LA IMAGEN DE INICIO --- */
+        .zona-click {
+            position: absolute;
             cursor: pointer;
+            z-index: 10;
+            /* border: 2px dashed red; */ /* Descomenta para ver las zonas */
+        }
+
+        /* Botón "APRENDE" en computadora (recuadro verde inferior izquierdo) */
+        .zona-aprende {
+            bottom: 8%;
+            left: 26%;
+            width: 16%;
+            height: 12%;
+        }
+
+        /* Botón "EXPLORA" en computadora (recuadro amarillo inferior derecho) */
+        .zona-explora {
+            bottom: 8%;
+            left: 56%;
+            width: 16%;
+            height: 12%;
         }
 
         #aprende-jugando {
@@ -326,6 +359,7 @@
             padding: 0 20px;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         #aprende-jugando img {
@@ -772,7 +806,14 @@
                 font-size: 0.9rem;
             }
 
-            /* --- SOLO PARA CELULAR: IMÁGENES A PANTALLA COMPLETA --- */
+            /* --- SOLO PARA CELULAR: MOSTRAR IMAGEN DE CELULAR Y OCULTAR DE COMPUTADORA --- */
+            .img-computadora {
+                display: none !important;
+            }
+            .img-celular {
+                display: block !important;
+            }
+
             #inicio {
                 padding: 0;
                 height: calc(100vh - 80px);
@@ -796,6 +837,23 @@
                 border-radius: 0;
                 box-shadow: none;
                 border: none;
+            }
+
+            /* --- AJUSTE DE ZONAS CLICKEABLES PARA CELULAR --- */
+            /* Botón "APRENDE" (verde grande en el centro-izquierda) */
+            .zona-aprende {
+                bottom: 18%;
+                left: 5%;
+                width: 50%;
+                height: 25%;
+            }
+
+            /* Botón "EXPLORA" (si existe a la derecha) */
+            .zona-explora {
+                bottom: 18%;
+                left: 55%;
+                width: 40%;
+                height: 25%;
             }
         }
     </style>
@@ -862,31 +920,24 @@
             <div class="menu-perfil" id="menu-perfil">
                 <h4>Elige tu foto</h4>
                 <div class="opciones-foto">
-                    <!-- Opción 1: Byte -->
                     <div class="opcion-foto" onclick="cambiarFoto('byte.jpg.jpeg')">
                         <img src="byte.jpg.jpeg" alt="Byte">
                     </div>
-                    <!-- Opción 2: Chivi -->
                     <div class="opcion-foto" onclick="cambiarFoto('chivi.jpg.jpeg')">
                         <img src="chivi.jpg.jpeg" alt="Chivi">
                     </div>
-                    <!-- Opción 3: Celu -->
                     <div class="opcion-foto" onclick="cambiarFoto('celu.jpg.jpeg')">
                         <img src="celu.jpg.jpeg" alt="Celu">
                     </div>
-                    <!-- Opción 4: Rick -->
                     <div class="opcion-foto" onclick="cambiarFoto('RICK.jpg.jpeg')">
                         <img src="RICK.jpg.jpeg" alt="Rick">
                     </div>
-                    <!-- Opción 5: Piku -->
                     <div class="opcion-foto" onclick="cambiarFoto('Piku.jpg.jpeg')">
                         <img src="Piku.jpg.jpeg" alt="Piku">
                     </div>
-                    <!-- Opción 6: Jack -->
                     <div class="opcion-foto" onclick="cambiarFoto('jack.jpg.jpeg')">
                         <img src="jack.jpg.jpeg" alt="Jack">
                     </div>
-                    <!-- Opción 7: Ari -->
                     <div class="opcion-foto" onclick="cambiarFoto('Ari.jpg.jpeg')">
                         <img src="Ari.jpg.jpeg" alt="Ari">
                     </div>
@@ -895,9 +946,18 @@
         </div>
     </nav>
 
-    <!-- SECCIÓN DE INICIO (CLICKEABLE PARA IR A APRENDE JUGANDO) -->
+    <!-- SECCIÓN DE INICIO -->
     <section id="inicio" class="seccion">
-        <img src="telefonodos.jpg.jpeg" alt="EcoVerse Banner" onclick="mostrarJuego()">
+        <!-- Imagen para Computadora -->
+        <img src="banner.jpg.jpeg" alt="EcoVerse Banner" class="img-computadora">
+        <!-- Imagen para Celular -->
+        <img src="telefonodos.jpg.jpeg" alt="EcoVerse Banner Celular" class="img-celular">
+        
+        <!-- Zona clickeable: Botón "APRENDE" (izquierda) - Lleva a ¿Qué es reciclar? -->
+        <div class="zona-click zona-aprende" onclick="mostrarReciclar()" title="Aprende"></div>
+        
+        <!-- Zona clickeable: Botón "EXPLORA" (derecha) - Lleva a Importancia -->
+        <div class="zona-click zona-explora" onclick="mostrarImportancia()" title="Explora"></div>
     </section>
 
     <!-- SECCIÓN: ¿QUÉ ES RECICLAR? -->
@@ -1207,29 +1267,18 @@
         </div>
     </section>
 
-    <!-- SECCIÓN: APRENDE JUGANDO (CON MAPA DE COORDENADAS) -->
+    <!-- SECCIÓN: APRENDE JUGANDO -->
     <section id="aprende-jugando" class="seccion">
-        <!-- 
-            IMPORTANTE: Reemplaza "TU_IMAGEN_AQUI.jpg" con el nombre real de tu archivo de imagen.
-            Las coordenadas del <map> están basadas en una imagen de 1200x600 píxeles.
-            Si tu imagen es más grande o más pequeña, ajusta los valores de "coords" proporcionalmente.
-        -->
-        <img src="telefono.jpg.jpeg" alt="Juego en Proceso - EcoVerse" usemap="#mapa-juego">
+        <!-- Imagen para Computadora -->
+        <img src="bannerjuego.jpg.jpeg" alt="Juego en Proceso" class="img-computadora">
+        <!-- Imagen para Celular -->
+        <img src="telefono.jpg.jpeg" alt="Juego en Proceso Celular" class="img-celular">
         
-        <map name="mapa-juego">
-            <!-- 
-                Zona Izquierda (Botón APRENDE) -> Lleva a "¿Qué es reciclar?"
-                Coordenadas: (x1,y1,x2,y2) = esquina superior izquierda, esquina inferior derecha
-                Aquí: 0,0 a 600,600 (mitad izquierda de una imagen de 1200x600)
-            -->
-            <area shape="rect" coords="0,0,600,600" href="#" onclick="mostrarReciclar(); return false;" alt="Aprende">
-            
-            <!-- 
-                Zona Derecha (Botón EXPLORA) -> Lleva a "Importancia"
-                Coordenadas: 600,0 a 1200,600 (mitad derecha de una imagen de 1200x600)
-            -->
-            <area shape="rect" coords="600,0,1200,600" href="#" onclick="mostrarImportancia(); return false;" alt="Explora">
-        </map>
+        <!-- Zona clickeable: Botón "APRENDE" (izquierda) - Lleva a ¿Qué es reciclar? -->
+        <div class="zona-click zona-aprende" onclick="mostrarReciclar()" title="Aprende"></div>
+        
+        <!-- Zona clickeable: Botón "EXPLORA" (derecha) - Lleva a Importancia -->
+        <div class="zona-click zona-explora" onclick="mostrarImportancia()" title="Explora"></div>
     </section>
 
     <!-- SCRIPT PARA CAMBIAR ENTRE SECCIONES Y PERFIL -->
