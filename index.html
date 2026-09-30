@@ -329,7 +329,7 @@
             display: none;
         }
 
-        /* --- ZONAS CLICKEABLES SOBRE LAS IMÁGENES --- */
+        /* --- ZONAS CLICKEABLES SOBRE LAS IMÁGENES (POSICIÓN GENERAL) --- */
         .zona-click {
             position: absolute;
             cursor: pointer;
@@ -361,7 +361,7 @@
             height: 12%;
         }
 
-        /* BOTÓN "EXPLORA" (recuadro amarillo, abajo derecha) - Lleva a Datos Curiosos */
+        /* BOTÓN "EXPLORA" (recuadro amarillo/naranja, abajo derecha) - Lleva a Datos Curiosos */
         .zona-explora {
             bottom: 8%;
             left: 62%;
@@ -855,8 +855,8 @@
                 border: none;
             }
 
-            /* --- AJUSTE DE ZONAS CLICKEABLES PARA CELULAR --- */
-            /* Botón "COMENZAR" (verde grande, centro-izquierda) */
+            /* --- AJUSTE DE ZONAS CLICKEABLES PARA CELULAR (MISMAS FUNCIONES QUE EN COMPUTADORA) --- */
+            /* Botón "COMENZAR" (verde grande, centro-izquierda) -> Aprende Jugando */
             .zona-comenzar {
                 bottom: 38%;
                 left: 5%;
@@ -864,7 +864,7 @@
                 height: 8%;
             }
 
-            /* Botón "APRENDE" (recuadro verde, abajo izquierda) */
+            /* Botón "APRENDE" (recuadro verde, abajo izquierda) -> ¿Qué es reciclar? */
             .zona-aprende {
                 bottom: 12%;
                 left: 5%;
@@ -872,7 +872,7 @@
                 height: 15%;
             }
 
-            /* Botón "JUEGA" (recuadro azul, al lado del verde) */
+            /* Botón "JUEGA" (recuadro azul, al lado del verde) -> Aprende Jugando */
             .zona-juega {
                 bottom: 12%;
                 left: 52%;
@@ -880,7 +880,7 @@
                 height: 15%;
             }
 
-            /* Botón "EXPLORA" (recuadro amarillo, abajo derecha) */
+            /* Botón "EXPLORA" (recuadro amarillo/naranja, abajo derecha) -> Datos Curiosos */
             .zona-explora {
                 bottom: 12%;
                 left: 52%;
@@ -994,7 +994,7 @@
         <!-- BOTÓN "JUEGA" (recuadro azul) - Lleva a Aprende Jugando -->
         <div class="zona-click zona-juega" onclick="mostrarJuego()" title="Juega"></div>
         
-        <!-- BOTÓN "EXPLORA" (recuadro amarillo) - Lleva a Datos Curiosos -->
+        <!-- BOTÓN "EXPLORA" (recuadro amarillo/naranja) - Lleva a Datos Curiosos -->
         <div class="zona-click zona-explora" onclick="mostrarDatos()" title="Explora"></div>
     </section>
 
@@ -1315,7 +1315,7 @@
         <!-- BOTÓN "APRENDE" (verde) - Lleva a ¿Qué es reciclar? -->
         <div class="zona-click zona-aprende" onclick="mostrarReciclar()" title="Aprende"></div>
         
-        <!-- BOTÓN "EXPLORA" (amarillo) - Lleva a Datos Curiosos -->
+        <!-- BOTÓN "EXPLORA" (amarillo/naranja) - Lleva a Datos Curiosos -->
         <div class="zona-click zona-explora" onclick="mostrarDatos()" title="Explora"></div>
     </section>
 
